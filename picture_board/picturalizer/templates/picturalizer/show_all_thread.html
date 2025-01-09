@@ -1,0 +1,9 @@
+<h1>スレッド一覧</h1>
+<h2><a href="{% url 'picturalizer:upload' %}">Upload more</a></h2>
+
+{% for image in images %}
+<a href="{% url 'picturalizer:thread' image.id %}"">
+    <img src='{{ MEDIA_URL }}{{image.picture}}' width=200>
+    <h2>{{ image.title }}</h2>
+</a>
+{% endfor %}
