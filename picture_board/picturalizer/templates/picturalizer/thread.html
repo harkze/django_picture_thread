@@ -1,2 +1,5 @@
 <img src='{{ MEDIA_URL }}{{object.picture}}' width=200>
 <h1>{{ object.title }}</h1>
+{% for comment in object.comments.all %}
+<p>{{ comment.text }}</p>
+{% endfor %}
