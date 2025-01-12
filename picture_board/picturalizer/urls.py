@@ -4,7 +4,7 @@ from . import views
 app_name = 'picturalizer'
 
 urlpatterns = [
-    path('showall/', views.showall, name='showall'),
-    path('upload/', views.UploadView.as_view(), name='upload'),
-    path('<int:pk>/thread', views.ThreadView.as_view(), name='thread')
+    path('showall/', views.ShowAllView.as_view(), name='showall'),
+    path('upload/', views.ImageUploadView.as_view(), name='imageupload'),
+    path('<int:pk>/thread', views.thread, name='thread'),
 ]

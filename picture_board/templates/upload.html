@@ -1,6 +1,6 @@
 <h1>Please Upload</h1>
 
-<form enctype="multipart/form-data" action="{% url 'picturalizer:upload' %}" method="post">
+<form enctype="multipart/form-data" method="post">
 {% csrf_token %}
 {{form.as_p}}
 <input type="submit" value="Upload">

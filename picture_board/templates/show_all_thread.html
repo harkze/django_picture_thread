@@ -1,10 +1,10 @@
+<p><a href="{% url 'picturalizer:imageupload' %}">スレッド作成</a></p>
 <h1>スレッド一覧</h1>
-<h2><a href="{% url 'picturalizer:upload' %}">Upload more</a></h2>
 
-{% for image in images %}
-<a href="{% url 'picturalizer:thread' image.id %}"">
-    <img src='{{ MEDIA_URL }}{{image.picture}}' width=200>
-    <h2>{{ image.title }}</h2>
+{% for object in object_list%}
+<a href="{% url 'picturalizer:thread' object.id %}">
+    <img src='picturalizer{{ MEDIA_URL }}{{object.picture}}' width=200>
+    <h2>{{ object.title }}</h2>
 </a>
 
 

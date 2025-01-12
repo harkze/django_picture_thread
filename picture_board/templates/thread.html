@@ -1,0 +1,32 @@
+<p><a href="{% url 'picturalizer:imageupload' %}">スレッド作成</a></p>
+<img src='{{ MEDIA_URL }}{{object.picture}}' width=200>
+<h1>{{ model.title }}</h1>
+
+<h2 class="subtitle">コメント</h2>
+{% for comment in model.comments.all %}
+<article class="media">
+    <div class="media-content">
+        <div class="content">
+            <p>
+                <strong>
+                    <p>{{ comment.text }}</p>
+                    <small>{{ comment.created_at }}</small>
+                </strong>
+                <br>
+            </p>
+        </div>
+    </div>
+    <hr>
+</article>
+{% empty %}
+<div class="notification">
+    <p>コメントはまだありません。</p>
+</div>
+{% endfor %}
+
+
+<form enctype="multipart/form-data" action="{% url 'picturalizer:thread' model.id %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Upload", name="button_change_question_text">
+    </form>
