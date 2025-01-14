@@ -83,6 +83,7 @@ class ThreadView(DetailView, generic.edit.ModelFormMixin):
         ctxt.update({
             'comment_form': CommentForm(**self.get_form_kwargs()),
         })
+        print(ctxt)
         return ctxt
     
     def post(self, request, *args, **kwargs):

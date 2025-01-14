@@ -2,7 +2,7 @@ from django.db import models
 import PIL
 
 class Image(models.Model):
-    picture = models.ImageField(upload_to='images/')
+    picture = models.FileField(upload_to='images/')
     title = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.CharField(max_length=200, default='名無し')

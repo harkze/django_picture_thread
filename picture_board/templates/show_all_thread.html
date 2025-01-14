@@ -1,9 +1,14 @@
+<head>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
 <p><a href="{% url 'picturalizer:imageupload' %}">スレッド作成</a></p>
 <h1>スレッド一覧</h1>
 
 {% for object in object_list%}
 <a href="{% url 'picturalizer:thread' object.id %}">
-    <img src='picturalizer{{ MEDIA_URL }}{{object.picture}}' width=200>
+    <img src='{{ MEDIA_URL }}{{ object.picture }}' width=200>
     <h2>{{ object.title }}</h2>
 </a>
 
@@ -14,13 +19,15 @@
 {% if is_paginated %}
 <div class="row justify-content-between align-items-center mb-4">
   <div class="col-lg">
-    <nav aria-label="Bootstrap Pagination Example">
-      <ul class="pagination mb-0">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center mb-0">
+        
         <!--前ページへのリンク-->
         {% if page_obj.has_previous %}
         <li class="page-item">
-          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-          <span class="mr-1 d-none d-sm-inline-block">&larr;</span> Previous
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&larr;</span>
+            <span class="sr-only">Previous</span>
           </a>
         </li>
         {% endif %}
@@ -28,7 +35,7 @@
         <!--ページ数表示-->
         {% for page_num in page_obj.paginator.page_range %}
           {% if page_obj.number == page_num %}
-            <li class="page-item active">
+            <li class="page-item active" aria-current="page">
               <a class="page-link" href="#">{{ page_num }}</a>
             </li>
           {% else %}
@@ -41,8 +48,9 @@
         <!--次ページへのリンク-->
         {% if page_obj.has_next %}
           <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-              Next<span class="ml-1 d-none d-sm-inline-block">&rarr;</span>
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+              <span aria-hidden="true">&rarr;</span>
+              <span class="sr-only">Next</span>
             </a>
           </li>
         {% endif %}
